@@ -1,0 +1,12 @@
+docker-compose up -d --no-deps --build php  # вот здесь php это image который надо пересобрать, когда я обновил конфиг в php
+docker-compose down
+ docker-compose up
+docker-compose stop && docker-compose rm -f
+
+docker run --rm --interactive --tty --volume $PWD:/app  composer create-project laravel/laravel src "5.*"
+
+#!/bin/bash
+# Delete all containers
+docker rm $(docker ps -a -q)
+# Delete all images
+docker rmi $(docker images -q)

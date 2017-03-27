@@ -25,36 +25,37 @@ services:
       build: ./docker/php/
       expose:
           - 9000
-#      links:
-#          - mysql
+      links:
+          - mysql
       volumes_from:
           - app
       environment:
           APP_ENV: development
 
   app:
-      image: php:7.1-fpm
+      image: php:7.1-cli
       volumes:
-          - ./src:/var/www/html
+          - ./src/public:/var/www/html
       command: "true"
 
-#  mysql:
-#      build: ./docker/mysql/
-#      volumes_from:
-#          - data
-#      environment:
-#          MYSQL_ROOT_PASSWORD: password
-#          MYSQL_DATABASE: laraveltestbase
-#          MYSQL_USER: laravel
-#          MYSQL_PASSWORD: laravel
+  mysql:
+      build: ./docker/mysql/
+      volumes_from:
+          - data
+      environment:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: test
+          MYSQL_USER: test
+          MYSQL_PASSWORD: test
 
-#  data:
-#      image: mysql:latest
-#      volumes:
-#          - ./docker/mysql/mysql/:/var/lib/mysql
-#          - ./db-dump:/docker-entrypoint-initdb.d
+  data:
+      image: mysql:latest
+      volumes:
+          - ./docker/mysql/mysql/:/var/lib/mysql
 #          - ./docker/mysql/dump:/tmp/dump
-#      command: "true"
+      command: "true"
+
+
 #  phpmyadmin:
 #      image: phpmyadmin/phpmyadmin
 #      ports:
