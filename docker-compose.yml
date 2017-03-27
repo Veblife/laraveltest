@@ -1,0 +1,75 @@
+version: '2'
+
+services:
+
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  nginx:
+      build: ./docker/nginx/
+      environment:
+        DEBUG: 'true'
+        VIRTUAL_HOST: 'laraveltest.dev'
+#        VIRTUAL_PROTO: 'https'
+      links:
+          - php
+      volumes_from:
+          - app
+  php:
+      build: ./docker/php/
+      expose:
+          - 9000
+#      links:
+#          - mysql
+      volumes_from:
+          - app
+      environment:
+          APP_ENV: development
+
+  app:
+      image: php:7.1-fpm
+      volumes:
+          - ./src:/var/www/html
+      command: "true"
+
+#  mysql:
+#      build: ./docker/mysql/
+#      volumes_from:
+#          - data
+#      environment:
+#          MYSQL_ROOT_PASSWORD: password
+#          MYSQL_DATABASE: laraveltestbase
+#          MYSQL_USER: laravel
+#          MYSQL_PASSWORD: laravel
+
+#  data:
+#      image: mysql:latest
+#      volumes:
+#          - ./docker/mysql/mysql/:/var/lib/mysql
+#          - ./db-dump:/docker-entrypoint-initdb.d
+#          - ./docker/mysql/dump:/tmp/dump
+#      command: "true"
+#  phpmyadmin:
+#      image: phpmyadmin/phpmyadmin
+#      ports:
+#          - 8090:80
+#      links:
+#          - mysql
+#      environment:
+#          PMA_HOST: mysql
+
+#  elasticsearch:
+#      image: elasticsearch:2.4.2
+#      command: elasticsearch -Des.network.host=0.0.0.0
+#      ports:
+#          - 9200:9200
+#          - 9300:9300
+#      volumes:
+##          - ./docker/elasticsearch/config:/usr/share/elasticsearch/config
+#          - ./docker/elasticsearch/data:/usr/share/elasticsearch/data
