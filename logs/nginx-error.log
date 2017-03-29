@@ -1,0 +1,18 @@
+2017/03/29 18:29:15 [error] 7#7: *2 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 172.19.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "laraveltest.dev", referrer: "http://laraveltest.dev/"
+2017/03/29 18:29:21 [error] 7#7: *2 open() "/usr/share/nginx/html/test.php" failed (2: No such file or directory), client: 172.19.0.1, server: localhost, request: "GET /test.php HTTP/1.1", host: "laraveltest.dev"
+2017/03/29 18:29:29 [error] 7#7: *2 open() "/usr/share/nginx/html/index.php" failed (2: No such file or directory), client: 172.19.0.1, server: localhost, request: "GET /index.php HTTP/1.1", host: "laraveltest.dev"
+2017/03/29 18:29:38 [error] 7#7: *3 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 172.19.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2017/03/29 18:32:38 [error] 7#7: *1 open() "/usr/share/nginx/html/test.php" failed (2: No such file or directory), client: 172.19.0.1, server: localhost, request: "GET /test.php HTTP/1.1", host: "localhost"
+2017/03/29 18:34:01 [error] 7#7: *1 open() "/usr/share/nginx/html/test.php" failed (2: No such file or directory), client: 172.19.0.1, server: localhost, request: "GET /test.php HTTP/1.1", host: "localhost"
+2017/03/29 18:35:02 [error] 7#7: *1 open() "/usr/share/nginx/html/test.php" failed (2: No such file or directory), client: 172.19.0.1, server: localhost, request: "GET /test.php HTTP/1.1", host: "localhost"
+2017/03/29 18:35:03 [error] 7#7: *1 open() "/usr/share/nginx/html/test.php" failed (2: No such file or directory), client: 172.19.0.1, server: localhost, request: "GET /test.php HTTP/1.1", host: "localhost"
+2017/03/29 18:35:03 [error] 7#7: *1 open() "/usr/share/nginx/html/test.php" failed (2: No such file or directory), client: 172.19.0.1, server: localhost, request: "GET /test.php HTTP/1.1", host: "localhost"
+2017/03/29 18:35:04 [error] 7#7: *1 open() "/usr/share/nginx/html/test.php" failed (2: No such file or directory), client: 172.19.0.1, server: localhost, request: "GET /test.php HTTP/1.1", host: "localhost"
+2017/03/29 18:35:04 [error] 7#7: *1 open() "/usr/share/nginx/html/test.php" failed (2: No such file or directory), client: 172.19.0.1, server: localhost, request: "GET /test.php HTTP/1.1", host: "localhost"
+2017/03/29 18:35:05 [error] 7#7: *1 open() "/usr/share/nginx/html/test.php" failed (2: No such file or directory), client: 172.19.0.1, server: localhost, request: "GET /test.php HTTP/1.1", host: "localhost"
+2017/03/29 18:35:05 [error] 7#7: *1 open() "/usr/share/nginx/html/test.php" failed (2: No such file or directory), client: 172.19.0.1, server: localhost, request: "GET /test.php HTTP/1.1", host: "localhost"
+2017/03/29 18:37:20 [emerg] 1#0: host not found in upstream "phpfpm" in /etc/nginx/sites-enabled/default:17
+2017/03/29 18:39:58 [emerg] 1#0: host not found in upstream "phpfpm" in /etc/nginx/sites-enabled/default:17
+2017/03/29 18:40:35 [emerg] 1#0: host not found in upstream "phpfpm" in /etc/nginx/sites-enabled/default:17
+2017/03/29 18:48:05 [emerg] 1#0: host not found in upstream "phpfpm" in /etc/nginx/sites-enabled/default:22
+2017/03/29 18:54:47 [error] 7#0: *11 FastCGI sent in stderr: "Primary script unknown" while reading response header from upstream, client: 172.19.0.3, server: laraveltest.dev, request: "GET /custom.php HTTP/1.1", upstream: "fastcgi://172.19.0.2:9000", host: "laraveltest.dev"
