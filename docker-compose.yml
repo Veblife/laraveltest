@@ -14,6 +14,7 @@ services:
 
   nginx:
       image: tutum/nginx
+#      image: nginx
 #      ports:
 #          - "80:80"
       links:
