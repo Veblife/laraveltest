@@ -13,3 +13,7 @@ docker rmi $(docker images -q)
 
 
 отключить в php echo ‘cgi.fix_pathinfo=0’ >> /etc/php/7.0/fpm/php.ini
+
+
+сделать для каждого сервиса свою папку, т.к. куча настроек
+добавить комманду для назначения дефолтной папки cmd d

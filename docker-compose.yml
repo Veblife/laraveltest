@@ -1,7 +1,6 @@
 version: '2'
 
 services:
-
   nginx-proxy:
     image: jwilder/nginx-proxy
     container_name: nginx-proxy
@@ -10,36 +9,39 @@ services:
       - 443:443
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-
-
   nginx:
-      image: tutum/nginx
-#      image: nginx
+#      image: tutum/nginx
+    image: nginx
 #      ports:
 #          - "80:80"
-      links:
-          - phpfpm
-      volumes:
-          - ./nginx/default:/etc/nginx/sites-available/default
-          - ./nginx/default:/etc/nginx/sites-enabled/default
-
-          - ./logs/nginx-error.log:/var/log/nginx/error.log
-          - ./logs/nginx-access.log:/var/log/nginx/access.log
-      environment:
-          DEBUG: 'true'
-          VIRTUAL_HOST: 'laraveltest.dev'
-  phpfpm:
+    links:
+        - php
+    volumes:
+        - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+        - ./src:/data/src
+        - ./logs/nginx/nginx-error.log:/var/log/nginx/error.log
+        - ./logs/nginx/nginx-access.log:/var/log/nginx/access.log
+    environment:
+        DEBUG: 'true'
+        VIRTUAL_HOST: 'laraveltest.dev'
+  php:
       image: php:fpm
       ports:
           - "9000:9000"
       volumes:
-          - ./src:/var/www/html
-#  mysql:
-#    image: mariadb
-#    environment:
-#      MYSQL_ROOT_PASSWORD: admin
-#    ports:
-#      - "3306:3306"
+          - ./src:/data/src
+  mysql:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/database:/var/lib/mysql
+      - ./logs/mysql:/var/log/mysql
 #  phpmyadmin:
 #    image: phpmyadmin/phpmyadmin
 #    restart: always
