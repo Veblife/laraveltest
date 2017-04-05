@@ -3,7 +3,10 @@ docker-compose down
  docker-compose up
 docker-compose stop && docker-compose rm -f
 
+// в папке src
 docker run --rm --interactive --tty --volume $PWD:/app  composer create-project laravel/laravel src "5.*"
+
+docker run --rm --interactive --tty --volume $PWD:/app  composer require barryvdh/laravel-ide-helper
 
 #!/bin/bash
 # Delete all containers
