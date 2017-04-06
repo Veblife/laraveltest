@@ -10,10 +10,7 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
   nginx:
-#      image: tutum/nginx
     image: nginx
-#      ports:
-#          - "80:80"
     links:
         - php
     volumes:
